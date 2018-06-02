@@ -1,0 +1,11 @@
+Package: cytoscape
+Title: Create and Style Network Charts
+Version: 0.0.1
+Authors@R: person("Matt", "Johnson", email = "mrjoh3@gmail.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.4.4)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat
+RoxygenNote: 6.0.1
