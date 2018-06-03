@@ -63,19 +63,26 @@ cytoscape(nodes = nodes, edges = edges) %>%
 
 ![](README_files/figure-markdown_github/plastics-2.png)
 
+With Geographic Location
+------------------------
+
 ``` r
 # n_loc <- nodes %>%
 #   dplyr::do(cbind(., ggmap::geocode(.$id)))
 
 coords <- cytoscape::coords %>%
   rename(x = lon,
-         y = lat)
+         y = lat) %>%
+  filter(id != 'World') %>%
+  mutate_at('y', funs(-.))
 edges <- filter(edges, 
                 source %in% coords$id,
                 target %in% coords$id)
 
 cytoscape(nodes = coords, edges = edges) %>% 
-  layout('preset')
+  layout('preset') %>%
+  node_style(width = 3, height = 3, 'font-size' = 8) %>%
+  edge_style(width = 1)
 ```
 
 ![](README_files/figure-markdown_github/location-1.png)
