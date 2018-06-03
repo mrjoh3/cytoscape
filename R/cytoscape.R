@@ -41,7 +41,16 @@ cytoscape <- function(df = NULL,
     message = message,
     nodes = nodes,
     edges = edges,
-    layout = jsonlite::toJSON(list(name = 'grid', rows = 1), auto_unbox = T)
+    layout = jsonlite::toJSON(list(name = 'grid', rows = 1),
+                              auto_unbox = TRUE),
+    node_style = jsonlite::toJSON(list('background-color' = '#666',
+                                       'label' = 'data(id)'),
+                                  auto_unbox = TRUE),
+    edge_style = jsonlite::toJSON(list('width' = 3,
+                                       'line-color' = '#ccc',
+                                       'target-arrow-color' = '#ccc',
+                                       'target-arrow-shape' = 'triangle'),
+                                  auto_unbox = TRUE)
   )
 
   # create widget

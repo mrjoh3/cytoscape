@@ -109,7 +109,9 @@ layout.cytoscape <- function(cytoscape,
                    transform = NULL,
                    ...) {
 
-  stopifnot(!is.null(name))
+  stopifnot(!is.null(name),
+            name %in% c('null', 'random', 'preset', 'grid', 'circle', 'concentric', 'breadthfirst', 'cose')
+  )
 
   layout <- list(name = name,
                  fit = fit,
@@ -135,7 +137,7 @@ layout.cytoscape <- function(cytoscape,
   layout <- modifyList(layout, list(...))
   layout <- Filter(Negate(function(x) is.null(unlist(x))), layout)
 
-  cytoscape$x$layout <- toJSON(layout,
+  cytoscape$x$layout <- jsonlite::toJSON(layout,
                                auto_unbox = T)
   return(cytoscape)
 

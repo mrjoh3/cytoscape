@@ -1,7 +1,10 @@
 ---
 title: "Cytoscape Network Charts"
 output: 
-  rmarkdown::github_document
+  html_document:
+    keep_md: false
+  rmarkdown::github_document:
+    html_preview: false
 ---
 
 ```{r setup, include=FALSE}
@@ -9,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(cytoscape)
 library(dplyr)
+library(jsonlite)
 
 ```
 
@@ -22,9 +26,28 @@ A HTMLWidget wrapper for the [Cytoscape.js](http://js.cytoscape.org/) graph / ne
 nodes <- data.frame(id = c('a','b'))
 edges <- data.frame(id = 'ab', source = 'a', target = 'b')
 
-cytoscape(nodes = nodes, edges = edges)
+cytoscape(nodes = nodes, edges = edges) 
 
 ```
+
+
+## Styling Edges and Nodes
+
+```{r style1, fig.width=10}
+
+ct <- cytoscape(nodes = nodes, edges = edges)
+
+ct %>% node_style('background-color' = '#ff0000')
+
+```
+
+
+```{r style2}
+
+ct %>% edge_style('line-color' = '#ff0000')
+
+```
+
 
 ## With Real Data
 
@@ -35,7 +58,7 @@ Comtrade waste plastic exports for December 2017.
 
 df <- cytoscape::comtrade
 
-nodes <- data.frame(id = unique(c(df$reporter, df$partner)))
+nodes <- data.frame(id = unique(c(df$reporter, df$partner)), stringsAsFactors = FALSE)
 edges <- df %>%
     dplyr::select(source = reporter,
                   target = partner) %>%
@@ -43,6 +66,28 @@ edges <- df %>%
            
 cytoscape(nodes = nodes, edges = edges) %>% 
   layout('grid', rows = 4)
+
+cytoscape(nodes = nodes, edges = edges) %>% 
+  layout('breadthfirst', directed = TRUE)
+
+
+```
+
+
+```{r location}
+
+# n_loc <- nodes %>%
+#   dplyr::do(cbind(., ggmap::geocode(.$id)))
+
+coords <- cytoscape::coords %>%
+  rename(x = lon,
+         y = lat)
+edges <- filter(edges, 
+                source %in% coords$id,
+                target %in% coords$id)
+
+cytoscape(nodes = coords, edges = edges) %>% 
+  layout('preset')
 
 ```
 
