@@ -1,10 +1,10 @@
 ---
 title: "Cytoscape Network Charts"
 output: 
-  html_document:
-    keep_md: false
   rmarkdown::github_document:
     html_preview: false
+  html_document:
+    keep_md: false
 ---
 
 ```{r setup, include=FALSE}
