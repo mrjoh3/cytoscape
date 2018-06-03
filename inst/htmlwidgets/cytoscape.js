@@ -18,12 +18,14 @@ HTMLWidgets.widget({
         var nodes = HTMLWidgets.dataframeToD3(x.nodes);
         var edges = HTMLWidgets.dataframeToD3(x.edges);
 
+        console.log(nodes[1]);
+
         // add data label to each element
         for(var n in nodes) {
-          nodes[n] = {data: nodes[n]}
+          nodes[n] = {data: nodes[n], position: nodes[n]};
         }
         for(var e in edges) {
-          edges[e] = {data: edges[e]}
+          edges[e] = {data: edges[e]};
         }
 
         console.log(nodes);
@@ -42,20 +44,12 @@ HTMLWidgets.widget({
             style: [ // the stylesheet for the graph
               {
                 selector: 'node',
-                style: {
-                  'background-color': '#666',
-                  'label': 'data(id)'
-                }
+                style: x.node_style
               },
 
               {
                 selector: 'edge',
-                style: {
-                  'width': 3,
-                  'line-color': '#ccc',
-                  'target-arrow-color': '#ccc',
-                  'target-arrow-shape': 'triangle'
-                }
+                style: x.edge_style
               }
             ],
 
