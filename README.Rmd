@@ -74,20 +74,25 @@ cytoscape(nodes = nodes, edges = edges) %>%
 ```
 
 
-```{r location}
+## With Geographic Location
+
+```{r location, fig.width=12}
 
 # n_loc <- nodes %>%
 #   dplyr::do(cbind(., ggmap::geocode(.$id)))
 
 coords <- cytoscape::coords %>%
   rename(x = lon,
-         y = lat)
+         y = lat) %>%
+  mutate_at('y', funs(-.))
 edges <- filter(edges, 
                 source %in% coords$id,
                 target %in% coords$id)
 
 cytoscape(nodes = coords, edges = edges) %>% 
-  layout('preset')
+  layout('preset') %>%
+  node_style(width = 3, height = 3, 'font-size' = 8) %>%
+  edge_style(width = 1)
 
 ```
 
