@@ -1,10 +1,10 @@
 ---
 title: "Cytoscape Network Charts"
 output: 
-  rmarkdown::github_document:
-    html_preview: false
   html_document:
     keep_md: false
+  rmarkdown::github_document:
+    html_preview: false
 ---
 
 ```{r setup, include=FALSE}
@@ -98,3 +98,44 @@ cytoscape(nodes = coords, edges = edges) %>%
 ```
 
 
+## Image Node Example
+
+Replicate the `Cytograph.js` [images example](http://js.cytoscape.org/demos/images-breadthfirst-layout/). This example does not currently include the touch effects.
+
+```{r image}
+
+img_nodes <- data.frame(id = c('cat','bird','ladybug','aphid','rose','grasshopper','plant','wheat'),
+                        images = c('https://farm2.staticflickr.com/1261/1413379559_412a540d29_b.jpg',
+                                   'https://farm8.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg',
+                                   'https://farm4.staticflickr.com/3063/2751740612_af11fb090b_b.jpg',
+                                   'https://farm9.staticflickr.com/8316/8003798443_32d01257c8_b.jpg',
+                                   'https://farm6.staticflickr.com/5109/5817854163_eaccd688f5_b.jpg',
+                                   'https://farm7.staticflickr.com/6098/6224655456_f4c3c98589_b.jpg',
+                                   'https://farm1.staticflickr.com/231/524893064_f49a4d1d10_z.jpg',
+                                   'https://farm3.staticflickr.com/2660/3715569167_7e978e8319_b.jpg'),
+                        stringsAsFactors = FALSE)
+img_edges <- data.frame(source = c('cat','bird','bird','grasshopper','grasshopper','ladybug','aphid'),
+                        target = c('bird','ladybug','grasshopper','plant','wheat','aphid','rose'),
+                        stringsAsFactors = FALSE)
+
+cytoscape(nodes = img_nodes,
+          edges = img_edges) %>%
+  layout(name = 'breadthfirst',
+         directed = TRUE,
+         padding = 10) %>%
+  node_style('height' = 80,
+             'width' = 80,
+             'background-fit' = 'cover',
+             'border-color' = '#000',
+             'border-width' = 3,
+             'border-opacity' = 0.5,
+             'label' = NULL) %>%
+  edge_style('curve-style' = 'bezier',
+             'width' = 6,
+             'target-arrow-shape' = 'triangle',
+             'line-color' = '#ffaaaa',
+             'target-arrow-color' = '#ffaaaa') %>%
+  node_images()
+
+
+```
