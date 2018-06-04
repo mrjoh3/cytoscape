@@ -28,7 +28,24 @@ HTMLWidgets.widget({
           edges[e] = {data: edges[e]};
         }
 
-        console.log(nodes);
+        // create style
+        var style = [
+              {selector: 'node', style: x.node_style},
+              {selector: 'edge', style: x.edge_style}
+        ];
+
+
+        // if x.images exists
+        if (x.hasOwnProperty('images')) {
+          var images = HTMLWidgets.dataframeToD3(x.images);
+          for (i = 0; i < images.length; ++i) {
+            images[i] = {selector: '#' + images[i].id, style: {'background-image': images[i].images}};
+          }
+          // add regular style
+          Array.prototype.push.apply(style, images);
+          console.log(style);
+        }
+
 
         // setup basic plot
         var cy = cytoscape({
@@ -41,18 +58,7 @@ HTMLWidgets.widget({
             },
 
 
-            style: [ // the stylesheet for the graph
-              {
-                selector: 'node',
-                style: x.node_style
-              },
-
-              {
-                selector: 'edge',
-                style: x.edge_style
-              }
-            ],
-
+            style: style,
             layout: x.layout
 
           });

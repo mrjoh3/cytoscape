@@ -1,6 +1,8 @@
 
 
 #' @title Edge Style
+#' @description Any recognised cytoscape style option can be passed to the node style. For available
+#' options see the \href{http://js.cytoscape.org/#style/edge-line}{cytoscape documentation}.
 #'
 #' @param cytoscape object
 #' @param ... additional parameters passed to the style edge object
@@ -29,11 +31,13 @@ edge_style <- function(cytoscape, ...){
 
 
 #' @title Node Style
+#' @description Any recognised cytoscape style option can be passed to the node style. For available
+#' options see the \href{http://js.cytoscape.org/#style/node-body}{cytoscape documentation}.
 #'
-#' @param cytoscape
+#' @param cytoscape object
 #' @param ... additional parameters passed to the style node object
 #'
-#' @return
+#' @return ctytoscape object
 #' @export
 #'
 #' @examples

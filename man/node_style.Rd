@@ -7,7 +7,16 @@
 node_style(cytoscape, ...)
 }
 \arguments{
+\item{cytoscape}{object}
+
 \item{...}{additional parameters passed to the style node object}
+}
+\value{
+ctytoscape object
+}
+\description{
+Any recognised cytoscape style option can be passed to the node style. For available
+options see the \href{http://js.cytoscape.org/#style/node-body}{cytoscape documentation}.
 }
 \examples{
 
