@@ -63,6 +63,18 @@ cytoscape(nodes = nodes, edges = edges) %>%
 
 ![](README_files/figure-markdown_github/plastics-2.png)
 
+Cytoscape-Cola Layout
+---------------------
+
+Constraint based layouts provided through ([cola.js](http://ialab.it.monash.edu/webcola/)) can be used via the [cytoscape-cola plugin](https://github.com/cytoscape/cytoscape.js-cola). All options available in the plugin [API](https://github.com/cytoscape/cytoscape.js-cola#api) are available but have not yet been tested.
+
+``` r
+cytoscape(nodes = nodes, edges = edges) %>% 
+  cola_layout()
+```
+
+![](README_files/figure-markdown_github/cola-1.png)
+
 With Geographic Location
 ------------------------
 
