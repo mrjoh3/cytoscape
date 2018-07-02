@@ -47,7 +47,8 @@ edges <- df %>%
     dplyr::mutate(id = paste(source, '_', target))
 ```
 
-    ## Warning: package 'bindrcpp' was built under R version 3.4.4
+    ## Warning in combine_vars(vars, ind_list): '.Random.seed' is not an integer
+    ## vector but of type 'NULL', so ignored
 
 ``` r
 cytoscape(nodes = nodes, edges = edges) %>% 
@@ -140,3 +141,13 @@ cytoscape(nodes = img_nodes,
 ```
 
 ![](README_files/figure-markdown_github/image-1.png)
+
+Shiny Example
+-------------
+
+A minimal shiny example can be run from the `cytoscape` package of from `inst/shiny/minimum_shiny`
+
+``` r
+
+shiny::runApp(system.file('shiny/minimum_shiny', package = 'cytoscape'))
+```
