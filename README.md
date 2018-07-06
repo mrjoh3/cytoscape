@@ -151,3 +151,53 @@ A minimal shiny example can be run from the `cytoscape` package of from `inst/sh
 
 shiny::runApp(system.file('shiny/minimum_shiny', package = 'cytoscape'))
 ```
+
+Pass JSON Object
+----------------
+
+Currently not working, it is likely creating the JSON object in R that is the problem
+
+``` r
+json <- "{
+elements: [
+    {
+      data: { id: 'a' }
+    },
+    {
+      data: { id: 'b' }
+    },
+    {
+      data: { id: 'ab', source: 'a', target: 'b' }
+    }
+  ],
+
+  style: [ 
+    {
+      selector: 'node',
+      style: {
+        'background-color': '#666',
+        'label': 'data(id)'
+      }
+    },
+
+    {
+      selector: 'edge',
+      style: {
+        'width': 3,
+        'line-color': '#ccc',
+        'target-arrow-color': '#ccc',
+        'target-arrow-shape': 'triangle'
+      }
+    }
+  ],
+
+  layout: {
+    name: 'grid',
+    rows: 1
+  }
+}"
+
+cytoscape(json = json)
+```
+
+![](README_files/figure-markdown_github/json-1.png)

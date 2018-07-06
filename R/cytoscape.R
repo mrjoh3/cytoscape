@@ -8,6 +8,7 @@
 #' @param target character column name where df used
 #' @param nodes data.frame or tibble
 #' @param edges data.frame or tibble
+#' @param json pass single json object. This option over-rules all others.
 #' @param message
 #' @param width
 #' @param height
@@ -28,6 +29,7 @@
 cytoscape <- function(df = NULL,
                       nodes = NULL,
                       edges = NULL,
+                      json = NULL,
                       id = 'id',
                       source = 'source',
                       target = 'target',
@@ -41,6 +43,7 @@ cytoscape <- function(df = NULL,
     message = message,
     nodes = nodes,
     edges = edges,
+    json = json,
     layout = jsonlite::toJSON(list(name = 'grid', rows = 1),
                               auto_unbox = TRUE),
     node_style = jsonlite::toJSON(list('background-color' = '#666',

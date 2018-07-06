@@ -12,6 +12,8 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
+        var cy;
+
         // TODO: code to render the widget, e.g.
         el.innerText = x.message;
 
@@ -46,23 +48,35 @@ HTMLWidgets.widget({
           console.log(style);
         }
 
+        if (x.json !== null) {
 
-        // setup basic plot
-        var cy = cytoscape({
+          console.log(x.json);
 
-            container: document.getElementById(el.id), // container to render in
-
-            elements: {
-              nodes: nodes,
-              edges: edges
-            },
-
-
-            style: style,
-            layout: x.layout
-
+          cy = cytoscape({
+            container: document.getElementById(el.id) // container to render in
           });
 
+          var json = JSON.parse(x.json);
+          cy.json(json);
+
+        } else {
+
+          // setup basic plot
+          cy = cytoscape({
+
+              container: document.getElementById(el.id), // container to render in
+
+              elements: {
+                nodes: nodes,
+                edges: edges
+              },
+
+
+              style: style,
+              layout: x.layout
+
+            });
+        }
       },
 
       resize: function(width, height) {

@@ -1,14 +1,14 @@
 ---
 title: "Cytoscape Network Charts"
-output: 
+output:
   rmarkdown::github_document:
-    html_preview: false
+    html_preview: no
   html_document:
-    keep_md: false
+    keep_md: no
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 11)
 
 library(cytoscape)
 library(dplyr)
@@ -33,7 +33,7 @@ cytoscape(nodes = nodes, edges = edges)
 
 ## Styling Edges and Nodes
 
-```{r style1, fig.width=10}
+```{r style1}
 
 ct <- cytoscape(nodes = nodes, edges = edges)
 
@@ -90,7 +90,7 @@ cytoscape(nodes = nodes, edges = edges) %>%
 
 ## With Geographic Location
 
-```{r location, fig.width=12}
+```{r location}
 
 # n_loc <- nodes %>%
 #   dplyr::do(cbind(., ggmap::geocode(.$id)))
@@ -162,5 +162,54 @@ A minimal shiny example can be run from the `cytoscape` package of from `inst/sh
 ```r
 
 shiny::runApp(system.file('shiny/minimum_shiny', package = 'cytoscape'))
+
+```
+
+## Pass JSON Object
+
+Currently not working, it is likely creating the JSON object in R that is the problem
+
+```{r json}
+
+json <- "{
+elements: [
+    {
+      data: { id: 'a' }
+    },
+    {
+      data: { id: 'b' }
+    },
+    {
+      data: { id: 'ab', source: 'a', target: 'b' }
+    }
+  ],
+
+  style: [ 
+    {
+      selector: 'node',
+      style: {
+        'background-color': '#666',
+        'label': 'data(id)'
+      }
+    },
+
+    {
+      selector: 'edge',
+      style: {
+        'width': 3,
+        'line-color': '#ccc',
+        'target-arrow-color': '#ccc',
+        'target-arrow-shape': 'triangle'
+      }
+    }
+  ],
+
+  layout: {
+    name: 'grid',
+    rows: 1
+  }
+}"
+
+cytoscape(json = json)
 
 ```
