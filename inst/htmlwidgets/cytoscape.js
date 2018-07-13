@@ -50,13 +50,16 @@ HTMLWidgets.widget({
 
         if (x.json !== null) {
 
-          console.log(x.json);
+          var json = JSON.parse(x.json);
+          console.log(json);
 
           cy = cytoscape({
-            container: document.getElementById(el.id) // container to render in
+            container: document.getElementById(el.id), // container to render in
+            elements: json.elements,
+            style: json.style,
+            layout: json.layout
           });
 
-          var json = JSON.parse(x.json);
           cy.json(json);
 
         } else {

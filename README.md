@@ -1,7 +1,7 @@
 Cytoscape Network Charts
 ================
 
-A HTMLWidget wrapper for the [Cytoscape.js](http://js.cytoscape.org/) graph / network visualisation and analysis library.
+A HTMLWidget wrapper for the [Cytoscape.js](http://js.cytoscape.org/) graph / network visualisation and analysis library. There are already a number of existing `R` packages for Cytoscape such as the [Bioconductor package](https://bioconductor.org/packages/release/bioc/html/RCy3.html) and the official [Cytoscape Widget](https://github.com/cytoscape/r-cytoscape.js). The purpose of this package is to make the process of producing a chart as simple as possible.
 
 A Minimal Example
 -----------------
@@ -45,12 +45,7 @@ edges <- df %>%
     dplyr::select(source = reporter,
                   target = partner) %>%
     dplyr::mutate(id = paste(source, '_', target))
-```
-
-    ## Warning in combine_vars(vars, ind_list): '.Random.seed' is not an integer
-    ## vector but of type 'NULL', so ignored
-
-``` r
+           
 cytoscape(nodes = nodes, edges = edges) %>% 
   layout('grid', rows = 4)
 ```
@@ -155,47 +150,47 @@ shiny::runApp(system.file('shiny/minimum_shiny', package = 'cytoscape'))
 Pass JSON Object
 ----------------
 
-Currently not working, it is likely creating the JSON object in R that is the problem
+If you already have a complete `JSON` this can be passed through directly as a character string. The `JSON` character is parsed in `javascript` using `JSON.parse()` so it is good practice to first test your `JSON` is properly formed. On the `R` side you can use `jsonlite::fromJSON()` or the web-service <http://json.parser.online.fr/> can sometimes give more meaningfull error messages.
 
 ``` r
-json <- "{
-elements: [
+json <- '{
+"elements":[
     {
-      data: { id: 'a' }
+      "data": { "id": "a" } 
     },
     {
-      data: { id: 'b' }
+      "data": { "id": "b" }
     },
     {
-      data: { id: 'ab', source: 'a', target: 'b' }
+      "data": { "id": "ab", "source": "a", "target": "b" }
     }
   ],
 
-  style: [ 
-    {
-      selector: 'node',
-      style: {
-        'background-color': '#666',
-        'label': 'data(id)'
-      }
-    },
-
-    {
-      selector: 'edge',
-      style: {
-        'width': 3,
-        'line-color': '#ccc',
-        'target-arrow-color': '#ccc',
-        'target-arrow-shape': 'triangle'
-      }
+"style": [ 
+  {
+    "selector": "node",
+    "style": {
+      "background-color": "#666",
+      "label": "data(id)"
     }
-  ],
+  },
 
-  layout: {
-    name: 'grid',
-    rows: 1
+  {
+    "selector": "edge",
+    "style": {
+      "width": 3,
+      "line-color": "#ccc",
+      "target-arrow-color": "#ccc",
+      "target-arrow-shape": "triangle"
+    }
   }
-}"
+],
+
+"layout": {
+  "name": "grid",
+  "rows": 1
+}
+}'
 
 cytoscape(json = json)
 ```
