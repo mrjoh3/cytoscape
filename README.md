@@ -45,7 +45,12 @@ edges <- df %>%
     dplyr::select(source = reporter,
                   target = partner) %>%
     dplyr::mutate(id = paste(source, '_', target))
-           
+```
+
+    ## Warning in combine_vars(vars, ind_list): '.Random.seed' is not an integer
+    ## vector but of type 'NULL', so ignored
+
+``` r
 cytoscape(nodes = nodes, edges = edges) %>% 
   layout('grid', rows = 4)
 ```
