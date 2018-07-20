@@ -1,6 +1,4 @@
-#' <Add Title>
-#'
-#' <Add Description>
+#' @title Cytoscape Network Chart
 #'
 #' @param df data.frame or tibble
 #' @param id character column name where df used
