@@ -2,10 +2,10 @@
 % Please edit documentation in R/cytoscape.R
 \name{cytoscape}
 \alias{cytoscape}
-\title{<Add Title>}
+\title{Cytoscape Network Chart}
 \usage{
-cytoscape(df = NULL, nodes = NULL, edges = NULL, id = "id",
-  source = "source", target = "target", message = "testing",
+cytoscape(df = NULL, nodes = NULL, edges = NULL, json = NULL,
+  id = "id", source = "source", target = "target", message = NULL,
   width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
@@ -15,6 +15,8 @@ cytoscape(df = NULL, nodes = NULL, edges = NULL, id = "id",
 
 \item{edges}{data.frame or tibble}
 
+\item{json}{pass single json object. This option over-rules all others.}
+
 \item{id}{character column name where df used}
 
 \item{source}{character column name where df used}
@@ -22,9 +24,6 @@ cytoscape(df = NULL, nodes = NULL, edges = NULL, id = "id",
 \item{target}{character column name where df used}
 
 \item{elementId}{}
-}
-\description{
-<Add Description>
 }
 \examples{
 
