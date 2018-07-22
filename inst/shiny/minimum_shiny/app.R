@@ -43,7 +43,8 @@ server <- function(input, output) {
 
      # draw the network
      cytoscape(nodes = nodes, edges = edges) %>%
-       layout('breadthfirst', directed = TRUE)
+       layout('breadthfirst', directed = TRUE) %>%
+       panzoom()
 
    })
 }

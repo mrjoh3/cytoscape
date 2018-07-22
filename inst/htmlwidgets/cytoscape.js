@@ -61,6 +61,11 @@ HTMLWidgets.widget({
           });
 
           cy.json(json);
+          console.log(x);
+
+          if(x.hasOwnProperty('panzoom')){
+            cy.panzoom(x.panzoom);
+          }
 
         } else {
 
@@ -79,6 +84,10 @@ HTMLWidgets.widget({
               layout: x.layout
 
             });
+          console.log(x);
+          if(x.hasOwnProperty('panzoom')){
+            cy.panzoom(x.panzoom);
+          }
         }
       },
 
