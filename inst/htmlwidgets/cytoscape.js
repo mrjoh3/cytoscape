@@ -89,6 +89,9 @@ HTMLWidgets.widget({
             cy.panzoom(x.panzoom);
           }
         }
+        
+        document.getElementById(el.id).cy = cy;
+        
       },
 
       resize: function(width, height) {
@@ -100,3 +103,15 @@ HTMLWidgets.widget({
     };
   }
 });
+
+
+if (HTMLWidgets.shinyMode) {
+  Shiny.addCustomMessageHandler("cytoscape:filter", function(message) {
+    var el = document.getElementById(message.id);
+    if (el) {
+      el.cy.nodes().filter(message.filter);
+    }
+  });
+}
+
+
