@@ -18,8 +18,9 @@ layout(cytoscape, name = NULL, fit = TRUE, padding = 30,
   avoidOverlapPadding = 10, nodeDimensionsIncludeLabels = FALSE,
   spacingFactor = NULL, condense = FALSE, rows = NULL, cols = NULL,
   position = NULL, sort = NULL, animate = FALSE,
-  animationDuration = 500, animationEasing = NULL, animateFilter = NULL,
-  ready = NULL, stop = NULL, transform = NULL, ...)
+  animationDuration = 500, animationEasing = NULL,
+  animateFilter = NULL, ready = NULL, stop = NULL,
+  transform = NULL, ...)
 }
 \arguments{
 \item{cytoscape}{object}
@@ -96,3 +97,4 @@ cytoscape(nodes = nodes, edges = edges) \%>\%
   cytoscape::layout(4)
 
 }
+\concept{layout}

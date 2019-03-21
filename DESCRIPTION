@@ -2,11 +2,12 @@ Package: cytoscape
 Title: Create and Style Network Charts
 Version: 0.0.1
 Authors@R: person("Matt", "Johnson", email = "mrjoh3@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: A minimalist htmlwidget for cytoscape.js
 Depends: R (>= 3.3.2)
 Imports:
     jsonlite,
-    htmlwidgets
+    htmlwidgets,
+    magrittr
 URL: https://github.com/mrjoh3/cytoscape
 BugReports: https://github.com/mrjoh3/cytoscape/issues
 License: GPL (>= 3)
@@ -17,4 +18,4 @@ Suggests:
     knitr,
     rmarkdown,
     webshot
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

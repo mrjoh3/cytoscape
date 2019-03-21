@@ -25,6 +25,9 @@ cytoscape(df = NULL, nodes = NULL, edges = NULL, json = NULL,
 
 \item{elementId}{}
 }
+\description{
+Cytoscape Network Chart
+}
 \examples{
 
  nodes <- data.frame(id = c('a','b'))

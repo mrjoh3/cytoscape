@@ -4,11 +4,11 @@
 \alias{panzoom}
 \title{panzoom Layout}
 \usage{
-panzoom(cytoscape, name = "panzoom", zoomFactor = 0.05, zoomDelay = 45,
-  minZoom = 0.1, maxZoom = 10, fitPadding = 50, panSpeed = 10,
-  panDistance = 10, panDragAreaSize = 75, panMinPercentSpeed = 0.25,
-  panInactiveArea = 8, panIndicatorMinOpacity = 0.5, zoomOnly = FALSE,
-  fitSelector = NULL,
+panzoom(cytoscape, name = "panzoom", zoomFactor = 0.05,
+  zoomDelay = 45, minZoom = 0.1, maxZoom = 10, fitPadding = 50,
+  panSpeed = 10, panDistance = 10, panDragAreaSize = 75,
+  panMinPercentSpeed = 0.25, panInactiveArea = 8,
+  panIndicatorMinOpacity = 0.5, zoomOnly = FALSE, fitSelector = NULL,
   animateOnFit = htmlwidgets::JS("function(){return false;}"),
   fitAnimationDuration = 1000, sliderHandleIcon = "fa fa-minus",
   zoomInIcon = "fa fa-plus", zoomOutIcon = "fa fa-minus",
@@ -18,4 +18,7 @@ panzoom(cytoscape, name = "panzoom", zoomFactor = 0.05, zoomDelay = 45,
 \item{zoomDelay}{}
 
 \item{...}{}
+}
+\description{
+panzoom Layout
 }

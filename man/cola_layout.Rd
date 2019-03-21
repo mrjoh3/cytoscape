@@ -5,17 +5,21 @@
 \title{Cola Layout}
 \usage{
 cola_layout(cytoscape, name = "cola", animate = TRUE, refresh = 1,
-  maxSimulationTime = 4000, ungrabifyWhileSimulating = FALSE, fit = TRUE,
-  padding = 30, boundingBox = NULL, nodeDimensionsIncludeLabels = FALSE,
+  maxSimulationTime = 4000, ungrabifyWhileSimulating = FALSE,
+  fit = TRUE, padding = 30, boundingBox = NULL,
+  nodeDimensionsIncludeLabels = FALSE,
   ready = htmlwidgets::JS("function(){}"),
   stop = htmlwidgets::JS("function(){}"), randomize = FALSE,
   avoidOverlap = TRUE, handleDisconnected = TRUE,
   nodeSpacing = htmlwidgets::JS("function( node ){ return 10; }"),
   flow = NULL, alignment = NULL, gapInequalities = NULL,
-  edgeLength = NULL, edgeSymDiffLength = NULL, edgeJaccardLength = NULL,
-  unconstrIter = NULL, userConstIter = NULL, allConstIter = NULL,
-  infinite = FALSE, ...)
+  edgeLength = NULL, edgeSymDiffLength = NULL,
+  edgeJaccardLength = NULL, unconstrIter = NULL,
+  userConstIter = NULL, allConstIter = NULL, infinite = FALSE, ...)
 }
 \arguments{
 \item{...}{}
+}
+\description{
+Cola Layout
 }
