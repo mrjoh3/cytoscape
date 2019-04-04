@@ -1,10 +1,10 @@
 ---
 title: "Cytoscape Network Charts"
 output:
-  html_document:
-    keep_md: no
   rmarkdown::github_document:
     html_preview: no
+  html_document:
+    keep_md: no
 ---
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -153,6 +153,39 @@ cytoscape(nodes = img_nodes,
              'target-arrow-color' = '#ffaaaa') %>%
   node_images()
 
+
+```
+
+
+## Grouping Nodes
+
+[Compound graphs](https://cytoscape.org/cytoscape.js-cola/demo-compound.html) where nodes are grouped are also possible. Add `parent` and `node_color` columns to the nodes `data.frame`. The final step is to add nodes for each of the groups, note the `bind_rows()` function in the example below. Thanks to [gilhornung](https://github.com/gilhornung) for [this example](https://github.com/mrjoh3/cytoscape/issues/8#issuecomment-475142230). 
+
+```{r groups}
+
+df <- cytoscape::comtrade
+
+nodes <- data_frame(id = unique(c(df$reporter, df$partner))) %>% 
+  # Define node groups
+  mutate(parent = ifelse(id %in% c("Nigeria", "Kenya", "South Africa"),
+                         "Africa",
+                         "Not Africa")) %>% 
+  # Define node colors
+  mutate(node_color = ifelse(parent == "Africa",
+                             "forestgreen",
+                             "darkorange")) %>%
+  # Need to add the nodes for the two groups, Africa and "Not Africa"
+  bind_rows(data_frame(id = c("Africa", "Not Africa"), 
+                       node_color="whitesmoke"))
+  
+edges <- df %>%
+    dplyr::select(source = reporter,
+                  target = partner) %>%
+    dplyr::mutate(id = paste0(source, '-', target))
+
+cytoscape(nodes = nodes, edges = edges) %>% 
+  node_style('background-color' = 'data(node_color)') %>% 
+  cola_layout(avoidOverlap = T)
 
 ```
 
