@@ -1,6 +1,6 @@
 dependencies:
   - name: cytoscape
-    version: 3.2.12
-    src: htmlwidgets/lib/cytoscape-3.2.12
+    version: 3.16.3
+    src: htmlwidgets/lib/cytoscape-3.16.3
     script: cytoscape.min.js
 

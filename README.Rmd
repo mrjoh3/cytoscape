@@ -69,8 +69,8 @@ edges <- df %>%
 cytoscape(nodes = nodes, edges = edges) %>% 
   layout('grid', rows = 4)
 
-cytoscape(nodes = nodes, edges = edges) %>% 
-  layout('breadthfirst', directed = TRUE)
+# cytoscape(nodes = nodes, edges = edges) %>%
+#   layout('breadthfirst', directed = TRUE)
 
 
 ```
@@ -154,6 +154,36 @@ cytoscape(nodes = img_nodes,
   node_images()
 
 
+      
+
+      
+      
+
+
+```
+
+```{r gradient}
+
+cytoscape(nodes = img_nodes,
+          edges = img_edges) %>%
+  layout(name = 'breadthfirst',
+         directed = TRUE,
+         padding = 10) %>%
+  node_style("content" = "data(id)",
+              "text-valign" = "center",
+              "text-halign" = "center",
+              'height' = 80,
+              'width' = 80,
+              "background-fill" = "radial-gradient",
+              'background-fit' = 'cover',
+              "background-gradient-stop-colors" = "cyan magenta yellow", 
+              "background-gradient-stop-positions" = "25 75 80"
+             )  %>%
+  edge_style('curve-style' = 'bezier',
+             'width' = 6,
+             'target-arrow-shape' = 'triangle',
+             'line-color' = '#ffaaaa',
+             'target-arrow-color' = '#ffaaaa')
 ```
 
 
