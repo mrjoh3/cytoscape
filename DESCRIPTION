@@ -1,5 +1,5 @@
 Package: cytoscape
-Title: Create and Style Network Charts
+Title: Create and Style Simple Network Charts
 Version: 0.0.2
 Authors@R: person("Matt", "Johnson", email = "mrjoh3@gmail.com", role = c("aut", "cre"))
 Description: A minimalist htmlwidget for cytoscape.js
@@ -16,6 +16,5 @@ LazyData: true
 Suggests: 
     testthat,
     knitr,
-    rmarkdown,
-    webshot
+    rmarkdown
 RoxygenNote: 6.1.1
