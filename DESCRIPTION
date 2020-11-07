@@ -1,6 +1,6 @@
 Package: cytoscape
 Title: Create and Style Network Charts
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Matt", "Johnson", email = "mrjoh3@gmail.com", role = c("aut", "cre"))
 Description: A minimalist htmlwidget for cytoscape.js
 Depends: R (>= 3.3.2)
