@@ -22,4 +22,4 @@ devtools::install_github('mrjoh3/cytoscape')
 ## Documentation
 
 For more detailed documentation and methods see
-http://mrjoh3.github.io/cytoscape3/.
+http://mrjoh3.github.io/cytoscape/.
