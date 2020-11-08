@@ -78,7 +78,7 @@ edges <- df %>%
                   target = partner) %>%
     dplyr::mutate(id = paste(source, '_', target))
 
-nodes <- data.frame(id = unique(c(df$source, df$target)), stringsAsFactors = FALSE)
+nodes <- data.frame(id = unique(c(edges$source, edges$target)), stringsAsFactors = FALSE)
            
 cytoscape(nodes = nodes, edges = edges) %>% 
   layout('grid', rows = 4)
@@ -199,7 +199,7 @@ cytoscape(nodes = img_nodes,
 
 df <- cytoscape::comtrade
 
-gp_nodes <- data_frame(id = unique(c(df$reporter, df$partner))) %>% 
+gp_nodes <- tibble(id = unique(c(df$reporter, df$partner))) %>% 
   # Define node groups
   mutate(parent = ifelse(id %in% c("Nigeria", "Kenya", "South Africa"),
                          "Africa",
