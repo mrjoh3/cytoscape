@@ -9,8 +9,8 @@ number of existing `R` packages for Cytoscape such as the [Bioconductor
 package](https://bioconductor.org/packages/release/bioc/html/RCy3.html)
 and the official [Cytoscape
 Widget](https://github.com/cytoscape/r-cytoscape.js). The purpose of
-this package is to make the process of producing a chart as simple as
-possible.
+this package is to make the process of producing a basic chart as simple
+as possible.
 
 ## Installation
 
@@ -18,3 +18,8 @@ possible.
 
 devtools::install_github('mrjoh3/cytoscape')
 ```
+
+## Documentation
+
+For more detailed documentation and methods see
+<http://mrjoh3.github.io/cytoscape3/>.
